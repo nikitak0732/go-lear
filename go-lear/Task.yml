@@ -1,0 +1,25 @@
+
+version: '3'
+
+tasks:
+  # Задача по умолчанию (вызывается просто командой `task`)
+  default:
+    cmds:
+      - task: build # Вызов другой задачи
+
+  # Задача для сборки
+  build:
+    desc: "Собираем Go бинарник"
+    cmds:
+      - go build -o myapp main.go
+
+  # Задача для запуска тестов
+  test:
+    desc: "Запускаем тесты"
+    cmds:
+      - go test -v ./...
+
+  # Задача для линтера (зависит от установки golangci-lint)
+  lint:
+    cmds:
+      - golangci-lint run

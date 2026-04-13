@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "test-module/gen/calculator;calculator";  // Полный путь от module
+
+service Calc {
+  rpc Add (Request) returns (Response);
+}
+
+message Request {
+  int32 a = 1;
+  int32 b = 2;
+}
+
+message Response {
+  int32 result = 1;
+}
